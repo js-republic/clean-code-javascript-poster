@@ -1,25 +1,19 @@
-# Fonctions
+# La fonction parfaite
 
-### Une tâche par fonction
-
-Une fonction ne doit réaliser qu'une seule tâche.
+### Ne doit réaliser qu'une seule tâche.
 
 Mauvais :
-
-```js
+```ecmascript 6
 function emailClients(clients) {
   clients.forEach(client => {
     const clientRecord = database.lookup(client);
-    if (clientRecord.isActive()) {
-      email(client);
-    }
+    if (clientRecord.isActive()) { email(client); }
   });
 }
 ```
 
 Bon :
-
-```js
+```ecmascript 6
 function emailClients(clients) {
   clients
     .filter(isClientActive)
@@ -32,38 +26,26 @@ function isClientActive(client) {
 }
 ```
 
-### Au maximum deux arguments
-
-Dans l'idéal, une fonction ne doit reçevoir que deux arguments au maximum.
-Pour reçevoir plus d'arguments, utilisez le destructuring.
+### Idéalement, ne recevoir que deux arguments maximum.
 
 Mauvais :
-
-```js
+```ecmascript 6
 function createMenu(title, body, buttonText, cancellable) { /* ... */ }
 ```
 
 Bon :
-
-```js
-function createMenu({ title, body, buttonText, cancellable }) { /* ... */ }
-
-createMenu({
-  title: 'Foo',
-  body: 'Bar',
-  buttonText: 'Baz',
-  cancellable: true,
-});
+```ecmascript 6
+function createMenu(menuConfig) { /* ... */ }
+const menuConfig = { title: 'Foo', body: 'Bar', buttonText: 'Baz', cancellable: true };
+createMenu(menuConfig);
 ```
 
-### N'utilisez pas de flag en tant qu'argument
+#### Dont aucun n'est un flag
 
 Si votre fonction reçoit un flag, c'est qu'elle effectue plusieurs tâches.
-Séparez votre code en plusieurs fonctions.
 
 Mauvais :
-
-```js
+```ecmascript 6
 function createFile(name, temp) {
   if (temp) {
     fs.create(`./temp/${name}`);
@@ -74,8 +56,7 @@ function createFile(name, temp) {
 ```
 
 Bon :
-
-```js
+```ecmascript 6
 function createFile(name) {
   fs.create(name);
 }
@@ -85,69 +66,47 @@ function createTempFile(name) {
 }
 ```
 
-### Évitez les effets de bord
+### Manier le destructuring comme des paramètres nommés
 
-Une fonction ne doit ni modifier un argument reçu, ni modifier des
-variables déclarés en dehors.
+Bon :
+```ecmascript 6
+function createMenu({title, body, buttonText, cancellable = true}) { /* ... */ }
+
+createMenu({ title: 'Foo', body: 'Bar', buttonText: 'Baz'});
+```
+
+### Ne dois pas avoir d'effet de bord
+
+Une fonction ne doit pas modifier un argument reçu ou une variable extérieure.
 
 Mauvais :
-
-```js
-const addItemToCart = (cart, item) => {
-  cart.push({ item, date: Date.now() });
-};
+```ecmascript 6
+const addItemToCart = (cart, item) => cart.push({ item, date: Date.now() });
 ```
 
 Bon :
-
-```js
-const addItemToCart = (cart, item) => {
-  return [...cart, { item, date: Date.now() }];
-};
+```ecmascript 6
+const addItemToCart = (cart, item) => [...cart, { item, date: Date.now() }];
 ```
 
-### Utilisez les valeurs par défaut des arguments
+### Préférer les valeurs par défaut des arguments
 
 Mauvais :
-
-```js
+```ecmascript 6
 function createMicrobrewery(name) {
   const breweryName = name || 'Hipster Brew Co.';
 }
 ```
 
 Bon :
-
-```js
+```ecmascript 6
 function createMicrobrewery(breweryName = 'Hipster Brew Co.') { /* ... */ }
 ```
 
-### Encapsulez les conditions
-
-Encapsuler une condition complexe dans une fonction bien nomée permet
-d'obtenir un code compréhensible dès la première lecture.
+### Aimer la programmation fonctionnelle
 
 Mauvais :
-
-```js
-if (fsm.state === 'fetching' && isEmpty(listNode)) { /* ... */ }
-```
-
-Bon :
-
-```js
-function shouldShowSpinner(fsm, listNode) {
-  return fsm.state === 'fetching' && isEmpty(listNode);
-}
-
-if (shouldShowSpinner(fsmInstance, listNodeInstance)) { /* ... */ }
-```
-
-### Priviligiez la programmation fonctionnelle
-
-Mauvais :
-
-```js
+```ecmascript 6
 const programmerOutput = [
   { name: 'Uncle Bobby', linesOfCode: 500 },
   { name: 'Suzie Q', linesOfCode: 1500 },
@@ -155,41 +114,21 @@ const programmerOutput = [
   { name: 'Gracie Hopper', linesOfCode: 1000 },
 ];
 
-let totalOutput = 0;
-
-for (let i = 0; i < programmerOutput.length; i++) {
-  totalOutput += programmerOutput[i].linesOfCode;
+const getTotalLineOfCode = () => {
+  let totalOutput = 0;
+  for (let i = 0; i < programmerOutput.length; i++) {
+    totalOutput += programmerOutput[i].linesOfCode;
+  }
+  return totalOutput;
 }
 ```
 
 Bon :
-
-```js
+```ecmascript 6
 const INITIAL_VALUE = 0;
-
-const totalOutput = programmerOutput
-  .map((programmer) => programmer.linesOfCode)
-  .reduce((acc, linesOfCode) => acc + linesOfCode, INITIAL_VALUE);
-```
-
-### N'ajoutez pas vos fonctions dans le scope global
-
-Ajouter une méthode à un objet JavaScript natif est une mauvaise pratique.
-
-Mauvais :
-
-```js
-Array.prototype.diff = function(comparisonArray) { /* ... */ }
-```
-
-Bon :
-
-```js
-class SuperArray extends Array {
-  constructor(...args) {
-    super(...args);
-  }
-
-  diff(comparisonArray) { /* ... */ }
+const getTotalLineOfCode = () => 
+  programmerOutput
+     .map(programmer => programmer.linesOfCode)
+     .reduce((acc, linesOfCode) => acc + linesOfCode, INITIAL_VALUE);
 }
 ```
