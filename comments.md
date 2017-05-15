@@ -40,7 +40,7 @@ function hashIt(data) {
   }
 }
 ```
-###Les commentaires ne sont pas là non plus pour journaliser :
+### Les commentaires ne sont pas là non plus pour journaliser :
 ``` javascript
 /**
  * 2016-12-20: Removed monads, didn't understand them (RM)
@@ -49,7 +49,7 @@ function hashIt(data) {
  * 2015-03-14: Added combine with type-checking (JR)
  */
 ```
-###Pas pour découper des longs fichiers :
+### Pas pour découper des longs fichiers :
 ``` javascript
 ////////////////////////////////////////////////////////////////////////////////
 // Scope Model Instantiation
@@ -59,7 +59,7 @@ $scope.model = {
   nav: 'bar'
 };
 ```
-###Ni pour positioner la fin des blocs (trop) complexes :
+### Ni pour positioner la fin des blocs (trop) complexes :
 ``` javascript
 while (toto < MAX_VALUES){
     if (test > MIN_VALUES){
