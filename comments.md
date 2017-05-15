@@ -5,7 +5,7 @@ Ne pas mettre de commentaire à toutes les sauces
 une logique complexe (algorithme mathématique, etc) 
 
 Mauvais :
-```javascript 1.8
+```ecmascript 6
 function hashIt(data) {
   // The hash
   let hash = 0;
@@ -26,7 +26,7 @@ function hashIt(data) {
 ```
 
 Bon :
-```javascript 1.8
+```ecmascript 6
 function hashIt(data) {
   let hash = 0;
   const length = data.length;
@@ -41,7 +41,7 @@ function hashIt(data) {
 }
 ```
 ### Les commentaires ne sont pas là non plus pour journaliser :
-``` javascript
+```ecmascript 6
 /**
  * 2016-12-20: Removed monads, didn't understand them (RM)
  * 2016-10-01: Improved using special monads (JP)
@@ -50,7 +50,7 @@ function hashIt(data) {
  */
 ```
 ### Pas pour découper des longs fichiers :
-``` javascript
+```ecmascript 6
 ////////////////////////////////////////////////////////////////////////////////
 // Scope Model Instantiation
 ////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +60,7 @@ $scope.model = {
 };
 ```
 ### Ni pour positioner la fin des blocs (trop) complexes :
-``` javascript
+```ecmascript 6
 while (toto < MAX_VALUES){
     if (test > MIN_VALUES){
     } // if

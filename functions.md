@@ -132,3 +132,25 @@ const getTotalLineOfCode = () =>
      .reduce((acc, linesOfCode) => acc + linesOfCode, INITIAL_VALUE);
 }
 ```
+### Et ne doit pas être placé en global !
+
+Sinon c'est le bordel ...
+
+Mauvais :
+```ecmascript 6
+Array.prototype.diff = function diff(comparisonArray) {
+  const hash = new Set(comparisonArray);
+  return this.filter(elem => !hash.has(elem));
+};
+```
+
+Bon :
+```ecmascript 6
+class SuperArray extends Array {
+  diff(comparisonArray) {
+    const hash = new Set(comparisonArray);
+    return this.filter(elem => !hash.has(elem));
+  }
+}
+
+```
