@@ -7,7 +7,7 @@ Les optimisations de performance sont rarement des modifications qui améliore l
 Inutile de faire des boucles inversées ou d'enregistrer la longueur du tableau.
 
 Mauvais
-```ecmascript 6
+```js
 for (let i = arr.length; i >= 0; i--) {}
 ou 
 const length = arr.length;
@@ -19,13 +19,13 @@ for (let i=0; i < length; i++) {}
 Ca permet de savoir vraiment ce qu'on test et d'être facilement modifiable
 
 Mauvais:
-```ecmascript 6
+```js
 if (fsm.state === 'fetching' && isEmpty(listNode)) {
   // ...
 }
 ```
 Bon:
-```ecmascript 6
+```js
 function shouldShowSpinner(fsm, listNode) {
   return fsm.state === 'fetching' && isEmpty(listNode);
 }
@@ -38,7 +38,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 ## Pour bien gérer l'asynchronisme, on peut 
 
 ### Utiliser les callback mais elles sont à éviter
-```ecmascript 6
+```js
 import { get } from 'request';
 import { writeFile } from 'fs';
 
@@ -58,7 +58,7 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin', (requestErr, response) 
 ```      
 ### Préférer les Promesses
 
-```ecmascript 6
+```js
 import { get } from 'request';
 import { writeFile } from 'fs';
 
@@ -76,7 +76,7 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
 
 ### Et même les Async/Await
 
-```ecmascript 6
+```js
 import { get } from 'request-promise';
 import { writeFile } from 'fs-promise';
 

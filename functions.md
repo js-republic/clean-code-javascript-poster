@@ -3,7 +3,7 @@
 ### Ne doit réaliser qu'une seule tâche.
 
 Mauvais :
-```ecmascript 6
+```js
 function emailClients(clients) {
   clients.forEach(client => {
     const clientRecord = database.lookup(client);
@@ -13,7 +13,7 @@ function emailClients(clients) {
 ```
 
 Bon :
-```ecmascript 6
+```js
 function emailClients(clients) {
   clients
     .filter(isClientActive)
@@ -29,12 +29,12 @@ function isClientActive(client) {
 ### Idéalement, ne recevoir que deux arguments maximum.
 
 Mauvais :
-```ecmascript 6
+```js
 function createMenu(title, body, buttonText, cancellable) { /* ... */ }
 ```
 
 Bon :
-```ecmascript 6
+```js
 function createMenu(menuConfig) { /* ... */ }
 const menuConfig = { title: 'Foo', body: 'Bar', buttonText: 'Baz', cancellable: true };
 createMenu(menuConfig);
@@ -45,7 +45,7 @@ createMenu(menuConfig);
 Si votre fonction reçoit un flag, c'est qu'elle effectue plusieurs tâches.
 
 Mauvais :
-```ecmascript 6
+```js
 function createFile(name, temp) {
   if (temp) {
     fs.create(`./temp/${name}`);
@@ -56,7 +56,7 @@ function createFile(name, temp) {
 ```
 
 Bon :
-```ecmascript 6
+```js
 function createFile(name) {
   fs.create(name);
 }
@@ -69,7 +69,7 @@ function createTempFile(name) {
 ### Manier le destructuring comme des paramètres nommés
 
 Bon :
-```ecmascript 6
+```js
 function createMenu({title, body, buttonText, cancellable = true}) { /* ... */ }
 
 createMenu({ title: 'Foo', body: 'Bar', buttonText: 'Baz'});
@@ -80,33 +80,33 @@ createMenu({ title: 'Foo', body: 'Bar', buttonText: 'Baz'});
 Une fonction ne doit pas modifier un argument reçu ou une variable extérieure.
 
 Mauvais :
-```ecmascript 6
+```js
 const addItemToCart = (cart, item) => cart.push({ item, date: Date.now() });
 ```
 
 Bon :
-```ecmascript 6
+```js
 const addItemToCart = (cart, item) => [...cart, { item, date: Date.now() }];
 ```
 
 ### Préférer les valeurs par défaut des arguments
 
 Mauvais :
-```ecmascript 6
+```js
 function createMicrobrewery(name) {
   const breweryName = name || 'Hipster Brew Co.';
 }
 ```
 
 Bon :
-```ecmascript 6
+```js
 function createMicrobrewery(breweryName = 'Hipster Brew Co.') { /* ... */ }
 ```
 
 ### Aimer la programmation fonctionnelle
 
 Mauvais :
-```ecmascript 6
+```js
 const programmerOutput = [
   { name: 'Uncle Bobby', linesOfCode: 500 },
   { name: 'Suzie Q', linesOfCode: 1500 },
@@ -124,7 +124,7 @@ const getTotalLineOfCode = () => {
 ```
 
 Bon :
-```ecmascript 6
+```js
 const INITIAL_VALUE = 0;
 const getTotalLineOfCode = () => 
   programmerOutput
@@ -137,7 +137,7 @@ const getTotalLineOfCode = () =>
 Sinon c'est le bordel ...
 
 Mauvais :
-```ecmascript 6
+```js
 Array.prototype.diff = function diff(comparisonArray) {
   const hash = new Set(comparisonArray);
   return this.filter(elem => !hash.has(elem));
@@ -145,7 +145,7 @@ Array.prototype.diff = function diff(comparisonArray) {
 ```
 
 Bon :
-```ecmascript 6
+```js
 class SuperArray extends Array {
   diff(comparisonArray) {
     const hash = new Set(comparisonArray);

@@ -12,7 +12,7 @@ Quel est mon nom ?
 ### Eloquent, Prononçable et Explicatif !
 
 Mauvais:
-```ecmascript 6
+```js
 const yyyymmdstr = moment().format('YYYY/MM/DD');
 
 const address = 'One Infinite Loop, Cupertino 95014';
@@ -20,7 +20,7 @@ const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 saveCityZipCodeAndDate(address.match(cityZipCodeRegex)[1], address.match(cityZipCodeRegex)[2], yyyymmdstr);
 ```
 Bon:
-```ecmascript 6
+```js
 const yearMonthDay = moment().format('YYYY/MM/DD');
 
 const address = 'One Infinite Loop, Cupertino 95014';
@@ -32,33 +32,33 @@ saveCityZipCodeAndDate(city, zipCode, yearMonthDay);
 ### Si c'est le même type, c'est le même nom
 
 Mauvais:
-```ecmascript 6
+```js
 getUserInfo();
 getClientData();
 getCustomerRecord();
 ```
 
 Bon:
-```ecmascript 6
+```js
 getUser();
 ```
 
 ### Pourquoi 525600 ?
 
 Mauvais:
-```ecmascript 6
+```js
 if (m === 525600 ) makeACuriousThing()
 ```
 
 Bon:
-```ecmascript 6
+```js
 const MINUTES_IN_A_YEAR = 525600;
 if (minutes === MINUTES_IN_A_YEAR) makeACuriousThing()
 ```
 
 ### Une convention, et s'y tenir
 
-```ecmascript 6
+```js
 class AnimalSoSweet {}                 // UpperCamelCase
 
 let anAnimal = new AnimalSoSweet();    // LowerCamelCase
@@ -71,7 +71,7 @@ const NB_MS_IN_HOUR = 3600;            // SCREAMING_SNAKE_CASE
 ### C'est logique de notre tête mais pas dans celles des autres
 
 Mauvais :
-```ecmascript 6
+```js
 const locations = ['Austin', 'New York', 'San Francisco'];
 locations.forEach(l => {
   doStuff();
@@ -85,7 +85,7 @@ locations.forEach(l => {
 ```
 
 Bon :
-```ecmascript 6
+```js
 const locations = ['Austin', 'New York', 'San Francisco'];
 locations.forEach(location => {
   doStuff();
@@ -100,7 +100,7 @@ locations.forEach(location => {
 ### Pas la peine de sur-contextualiser
 
 Mauvais :
-```ecmascript 6
+```js
 const Car = {
   carMake: 'Honda',
   carModel: 'Accord',
@@ -112,7 +112,7 @@ function paintCar(car) {
 }
 ```
 
-```ecmascript 6
+```js
 const Car = {
   make: 'Honda',
   model: 'Accord',
@@ -125,13 +125,13 @@ function paintCar(car) {
 ```
 ### Soyez encore plus attentif avec les fonctions
 
-```ecmascript 6
+```js
 function addToDate(date, month) { }
 const date = new Date();
 addToDate(date, 1); // ça ajoute quoi ?
 ```
 
-```ecmascript 6
+```js
 function addMonthToDate(month, date) { }
 const date = new Date();
 addMonthToDate(1, date);
