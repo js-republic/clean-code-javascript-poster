@@ -1,7 +1,7 @@
 Ne pas mettre de commentaire à toutes les sauces
 ===
 
-Les commentaires sont des excuses, pas un pré-requis. Un bon code se comprend de lui-même. Les commentaires doivent être présents uniquement pour expliquer 
+**Les commentaires sont des excuses**, pas un pré-requis. Un bon code se comprend de lui-même. Les commentaires doivent être présents uniquement pour expliquer 
 une logique complexe (algorithme mathématique, etc) 
 
 Mauvais :
@@ -40,7 +40,7 @@ function hashIt(data) {
   }
 }
 ```
-Les commentaires ne sont pas là non plus pour journaliser :
+###Les commentaires ne sont pas là non plus pour journaliser :
 ``` javascript
 /**
  * 2016-12-20: Removed monads, didn't understand them (RM)
@@ -49,7 +49,7 @@ Les commentaires ne sont pas là non plus pour journaliser :
  * 2015-03-14: Added combine with type-checking (JR)
  */
 ```
-Pas pour découper des longs fichiers :
+###Pas pour découper des longs fichiers :
 ``` javascript
 ////////////////////////////////////////////////////////////////////////////////
 // Scope Model Instantiation
@@ -59,7 +59,7 @@ $scope.model = {
   nav: 'bar'
 };
 ```
-Ni pour positioner la fin des blocs (trop) complexes :
+###Ni pour positioner la fin des blocs (trop) complexes :
 ``` javascript
 while (toto < MAX_VALUES){
     if (test > MIN_VALUES){
