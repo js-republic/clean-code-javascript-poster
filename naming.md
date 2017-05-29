@@ -44,7 +44,7 @@ Bon:
 getUser();
 ```
 
-## Faite la guerre aux valeurs magiques ?
+## Faite la guerre aux valeurs magiques
 
 Une valeur arbitraire dans le code ne donne aucune information sur son identité.
 Nommez là pour connaitre son utilité.
@@ -65,7 +65,7 @@ if (minutes === MINUTES_IN_A_YEAR) makeACuriousThing()
 Le typage n'étant pas explicite en JavaScript, avoir une convention permet de rapidement comprendre ce qu'on manipule et facilite la lecture.
 
 ```js
-class AnimalSoSweet {}                 // Classe : UpperCamelCase
+class AnimalSoSweet {}                 // classe : UpperCamelCase
 
 let anAnimal = new AnimalSoSweet();    // variable : LowerCamelCase
 function sendARequest(requestToSend){};// fonction : LowerCamelCase
@@ -76,7 +76,7 @@ const NB_MS_IN_HOUR = 3600;            // constante : SCREAMING_SNAKE_CASE
 
 ## C'est logique de notre tête mais pas dans celles des autres
 
-Il peut paraitre des fois redondant et verbeux de nommer intégralement. Rappeler vous que cette redondance n'est pas explicite pour leur autres.
+Il peut paraitre des fois redondant et verbeux de nommer intégralement. Rappeler vous que cette redondance n'est pas explicite pour les autres.
 
 Mauvais :
 ```js
@@ -107,7 +107,7 @@ locations.forEach(location => {
 
 ## Pas la peine de sur-contextualiser
 
-Même si un nom doit être entier, le contexte dans le quel il agit complète son identité. Il n'est pas la peine d'en remettre une couche.
+Même si un nom doit être entier, le contexte dans lequel il agit complète son identité. Il n'est pas la peine d'en remettre une couche.
 
 Mauvais :
 ```js
@@ -135,7 +135,7 @@ function paintCar(car) {
 ```
 ## Soyez encore plus attentif avec les fonctions
 
-Une fonction va être potentiellement appeler pas d'autres développeurs, il est crucial que son utilité soit visible.
+Là encore JavaScript complique la tâche en n'étant pas préaucupé par le nombre de variable attendu. La fonction nécessite dés lors un effort supplémentaire dans son nom.
 
 ```js
 function addToDate(date, month) { }
