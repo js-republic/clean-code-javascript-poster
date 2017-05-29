@@ -1,19 +1,18 @@
-Quel est mon nom ?
+Choisis chaque nom avec attention
 ==
 
-"There are only two hard things in Computer Science: cache invalidation and naming things."
--- Phil Karlton
+En JavaScript, encore plus que dans les autres langages populaires le nommage joue un rôle crucial. En effet, étant un langage avec un typage non-explicite faible, ne pas prendre un soin tout particulier à donner le meilleur nom à chaque élément, revient à se retirer la dernier moyen de comprendre ce qu'on manipule.
 
 "Programs are meant to be read by humans and only incidentally for computers to execute."
 -- Donald Knuth
 
-## Vous dites un bon nom ?
+## Un nom doit être éloquent, prononçable et explicatif !
 
-### Eloquent, Prononçable et Explicatif !
+Un bon nom doit retranscrire la sémantique de ce qu'il nomme, tout en restant prononçable et relativement compréhensible.
 
 Mauvais:
 ```js
-const yyyymmdstr = moment().format('YYYY/MM/DD');
+const yyyymmddstr = moment().format('YYYY/MM/DD');
 
 const address = 'One Infinite Loop, Cupertino 95014';
 const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
@@ -29,7 +28,9 @@ const [, city, zipCode] = address.match(cityZipCodeRegex) || [];
 saveCityZipCodeAndDate(city, zipCode, yearMonthDay);
 ```
 
-### Si c'est le même type, c'est le même nom
+## Si c'est le même type, c'est le même nom
+
+Veillez à ce que partout dans votre code, un type soit nommé de la même façon.
 
 Mauvais:
 ```js
@@ -43,7 +44,10 @@ Bon:
 getUser();
 ```
 
-### Pourquoi 525600 ?
+## Faite la guerre aux valeurs magiques ?
+
+Une valeur arbitraire dans le code ne donne aucune information sur son identité.
+Nommez là pour connaitre son utilité.
 
 Mauvais:
 ```js
@@ -56,19 +60,23 @@ const MINUTES_IN_A_YEAR = 525600;
 if (minutes === MINUTES_IN_A_YEAR) makeACuriousThing()
 ```
 
-### Une convention, et s'y tenir
+## Une convention, et s'y tenir
+
+Le typage n'étant pas explicite en JavaScript, avoir une convention permet de rapidement comprendre ce qu'on manipule et facilite la lecture.
 
 ```js
-class AnimalSoSweet {}                 // UpperCamelCase
+class AnimalSoSweet {}                 // Classe : UpperCamelCase
 
-let anAnimal = new AnimalSoSweet();    // LowerCamelCase
-function sendARequest(requestToSend){};// LowerCamelCase
+let anAnimal = new AnimalSoSweet();    // variable : LowerCamelCase
+function sendARequest(requestToSend){};// fonction : LowerCamelCase
 
-const NB_MS_IN_HOUR = 3600;            // SCREAMING_SNAKE_CASE
-// /app/models/mega-user.js            // kebab-case
+const NB_MS_IN_HOUR = 3600;            // constante : SCREAMING_SNAKE_CASE
+// /app/models/mega-user.js            // fichiers : kebab-case (même les classes)
 ```
 
-### C'est logique de notre tête mais pas dans celles des autres
+## C'est logique de notre tête mais pas dans celles des autres
+
+Il peut paraitre des fois redondant et verbeux de nommer intégralement. Rappeler vous que cette redondance n'est pas explicite pour leur autres.
 
 Mauvais :
 ```js
@@ -97,7 +105,9 @@ locations.forEach(location => {
 });
 ```
 
-### Pas la peine de sur-contextualiser
+## Pas la peine de sur-contextualiser
+
+Même si un nom doit être entier, le contexte dans le quel il agit complète son identité. Il n'est pas la peine d'en remettre une couche.
 
 Mauvais :
 ```js
@@ -123,7 +133,9 @@ function paintCar(car) {
   car.color = 'Red';
 }
 ```
-### Soyez encore plus attentif avec les fonctions
+## Soyez encore plus attentif avec les fonctions
+
+Une fonction va être potentiellement appeler pas d'autres développeurs, il est crucial que son utilité soit visible.
 
 ```js
 function addToDate(date, month) { }
