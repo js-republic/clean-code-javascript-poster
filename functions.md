@@ -2,6 +2,8 @@
 
 ### Ne doit réaliser qu'une seule tâche.
 
+Cela limite les incrompréhensions et améliore la composabilité des fonctions (cf. programmation fonctionnelle)
+
 Mauvais :
 ```js
 function emailClients(clients) {
@@ -27,6 +29,9 @@ function isClientActive(client) {
 ```
 
 ### Idéalement, ne recevoir que deux arguments maximum.
+
+Un nombre réduit d'argument rend plus simple l'utilisation de la fonction et réduit
+la combinatoire de test.
 
 Mauvais :
 ```js
@@ -68,6 +73,8 @@ function createTempFile(name) {
 
 ### Manier le destructuring comme des paramètres nommés
 
+On connait ainsi le rôle de chaque paramètre, les mettres dans l'ordre que l'on veut et même en "ignorer" certains.
+
 Bon :
 ```js
 function createMenu({title, body, buttonText, cancellable = true}) { /* ... */ }
@@ -77,7 +84,7 @@ createMenu({ title: 'Foo', body: 'Bar', buttonText: 'Baz'});
 
 ### Ne dois pas avoir d'effet de bord
 
-Une fonction ne doit pas modifier un argument reçu ou une variable extérieure.
+Une fonction ne doit pas modifier un argument reçu ou une variable extérieure car cela nuit à sa composabilité.
 
 Mauvais :
 ```js
@@ -89,21 +96,9 @@ Bon :
 const addItemToCart = (cart, item) => [...cart, { item, date: Date.now() }];
 ```
 
-### Préférer les valeurs par défaut des arguments
-
-Mauvais :
-```js
-function createMicrobrewery(name) {
-  const breweryName = name || 'Hipster Brew Co.';
-}
-```
-
-Bon :
-```js
-function createMicrobrewery(breweryName = 'Hipster Brew Co.') { /* ... */ }
-```
-
 ### Aimer la programmation fonctionnelle
+
+JavaScript le facilite, préférez la programmation fonctionelle à la programmtion impérative. Elle est plus élégante et facile à tester. 
 
 Mauvais :
 ```js
@@ -134,7 +129,7 @@ const getTotalLineOfCode = () =>
 ```
 ### Et ne doit pas être placé en global !
 
-Sinon c'est le bordel ...
+Car cela entrainera beaucoup d'effet de bord innattendu.
 
 Mauvais :
 ```js
