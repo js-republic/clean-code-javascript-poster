@@ -8,4 +8,4 @@ Le poster se décrira comme une check list comprenant cinq grandes parties :
 * [L'algorithmique](./algo.md)
 * [Les commentaires](./comments.md)
 * [Le code mort](./dead-code.md)
-
+* [Pas de code, c'est mieux qu'un beau code](./empty-is-better-than-good.md)
