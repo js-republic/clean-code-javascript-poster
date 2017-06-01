@@ -1,7 +1,7 @@
 Choisis chaque nom avec attention
 ==
 
-En JavaScript, encore plus que dans les autres langages populaires le nommage joue un rôle crucial. En effet, étant un langage avec un typage non-explicite faible, ne pas prendre un soin tout particulier à donner le meilleur nom à chaque élément, revient à se retirer la dernier moyen de comprendre ce qu'on manipule.
+En JavaScript, étant un langage avec un typage non-explicite faible, ne pas prendre un soin tout particulier à donner le meilleur nom à chaque élément, revient à se retirer la dernier moyen de comprendre ce qu'on manipule.
 
 "Programs are meant to be read by humans and only incidentally for computers to execute."
 -- Donald Knuth

@@ -1,5 +1,7 @@
 # La fonction parfaite
 
+Element de base en JavaScript, prenez grand soin de vos fonctions, ce sont les fondations d'un projet robuste. 
+
 ### Ne doit réaliser qu'une seule tâche.
 
 Cela limite les incrompréhensions et améliore la composabilité des fonctions (cf. programmation fonctionnelle)

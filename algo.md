@@ -1,10 +1,12 @@
 Un peu d'algorithmique
 ==
 
+Les algorithmes on nous apprend surtout à en faire des performants, mais pas forcément comment bien les utilisés ou les organiser.
+
 ## Sur-optimiser son code est inutile
 
-Les optimisations de performance sont rarement des modifications qui améliore la lecture du code et sont déjà transformé par NodeJS ou le navigateur qui l'execute.
-Inutile de faire des boucles inversées ou d'enregistrer la longueur du tableau.
+Les optimisations de performance sont rarement des modifications qui améliorent la lecture du code. A noté que NodeJS ou le navigateur fait déjà bon nombre d'optimisation par lui-même.
+Inutile de faire des boucles inversées ou d'enregistrer la longueur du tableau donc.
 
 Mauvais
 ```js
@@ -16,7 +18,7 @@ for (let i=0; i < length; i++) {}
 
 ## Encapsuler le condition, pour leur donner un petit nom
 
-Ca permet de savoir vraiment ce qu'on test et d'être facilement modifiable
+Cela permet de savoir vraiment ce qu'on test dans la condition et d'être facilement modifiable.
 
 Mauvais:
 ```js
@@ -37,7 +39,10 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 
 ## Pour bien gérer l'asynchronisme, on peut 
 
-### Utiliser les callback mais elles sont à éviter
+### Utiliser les callback
+
+Mais elles sont à éviter car elles sont trop verbeuses et pas assez puissantes pour gérer tous les cas.
+
 ```js
 import { get } from 'request';
 import { writeFile } from 'fs';
@@ -58,6 +63,9 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin', (requestErr, response) 
 ```      
 ### Préférer les Promesses
 
+Standard actuel, plus élégantes mais améliorables, notament sur la gestion d'erreur :
+`.catch` vs `try/catch`
+
 ```js
 import { get } from 'request';
 import { writeFile } from 'fs';
@@ -75,6 +83,8 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
 ```
 
 ### Et même les Async/Await
+
+Les Async/Await (définie en ES2017 et présents en NodeJS) permettent d'écrire l'asynchrone de façon synchrone, donnant ainsi une voie commune de gestion d'erreur et d'accumulation de donnée.
 
 ```js
 import { get } from 'request-promise';
