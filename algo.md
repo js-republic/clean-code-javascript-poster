@@ -48,7 +48,7 @@ Bad
 import { get } from 'request';
 import { writeFile } from 'fs';
 
-get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin', (requestErr, response) => {
+get('https://goo.gl/FxyZ7i', (requestErr, response) => {
   if (requestErr) {
     console.error(requestErr);
   } else {
@@ -72,7 +72,7 @@ Better
 import { get } from 'request';
 import { writeFile } from 'fs';
 
-get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
+get('https://goo.gl/FxyZ7i')
   .then((response) => {
     return writeFile('article.html', response);
   })
@@ -95,7 +95,7 @@ import { writeFile } from 'fs-promise';
 
 async function getCleanCodeArticle() {
   try {
-    const response = await get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin');
+    const response = await get('https://goo.gl/FxyZ7i');
     await writeFile('article.html', response);
     console.log('File written');
   } catch(err) {
