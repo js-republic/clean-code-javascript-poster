@@ -106,8 +106,6 @@ Mauvais :
 ```js
 const programmerOutput = [
   { name: 'Uncle Bobby', linesOfCode: 500 },
-  { name: 'Suzie Q', linesOfCode: 1500 },
-  { name: 'Jimmy Gosling', linesOfCode: 150 },
   { name: 'Gracie Hopper', linesOfCode: 1000 },
 ];
 
