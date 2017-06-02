@@ -5,7 +5,7 @@ Les algorithmes on nous apprend surtout à en faire des performants, mais pas fo
 
 ## Sur-optimiser son code est inutile
 
-Les optimisations de performance sont rarement des modifications qui améliorent la lecture du code. A noté que NodeJS ou le navigateur fait déjà bon nombre d'optimisation par lui-même.
+Les optimisations de performance sont rarement des modifications qui améliorent la lecture du code. A noté que NodeJS ou le navigateur fait déjà bon nombre d'optimisation par eux-même.
 Inutile de faire des boucles inversées ou d'enregistrer la longueur du tableau donc.
 
 Mauvais
@@ -16,7 +16,7 @@ const length = arr.length;
 for (let i=0; i < length; i++) {}
 ```
 
-## Encapsuler le condition, pour leur donner un petit nom
+## Encapsuler les conditions, pour leur donner un petit nom
 
 Cela permet de savoir vraiment ce qu'on test dans la condition et d'être facilement modifiable.
 
@@ -43,6 +43,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 
 Mais elles sont à éviter car elles sont trop verbeuses et pas assez puissantes pour gérer tous les cas.
 
+Bad
 ```js
 import { get } from 'request';
 import { writeFile } from 'fs';
@@ -66,6 +67,7 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin', (requestErr, response) 
 Standard actuel, plus élégantes mais améliorables, notament sur la gestion d'erreur :
 `.catch` vs `try/catch`
 
+Better
 ```js
 import { get } from 'request';
 import { writeFile } from 'fs';
@@ -86,6 +88,7 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
 
 Les Async/Await (définie en ES2017 et présents en NodeJS) permettent d'écrire l'asynchrone de façon synchrone, donnant ainsi une voie commune de gestion d'erreur et d'accumulation de donnée.
 
+Best
 ```js
 import { get } from 'request-promise';
 import { writeFile } from 'fs-promise';
