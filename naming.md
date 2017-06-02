@@ -62,7 +62,7 @@ if (minutes === MINUTES_IN_A_YEAR) makeACuriousThing()
 
 ## Une convention, et s'y tenir
 
-Le typage n'étant pas explicite en JavaScript, avoir une convention permet de rapidement comprendre ce qu'on manipule et facilite la lecture.
+~~Le typage n'étant pas explicite en JavaScript, avoir une convention permet de rapidement comprendre ce qu'on manipule et facilite la lecture.
 
 ```js
 class AnimalSoSweet {}                 // classe : UpperCamelCase
