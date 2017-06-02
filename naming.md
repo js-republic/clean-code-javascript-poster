@@ -137,12 +137,13 @@ function paintCar(car) {
 
 Là encore JavaScript complique la tâche en n'étant pas préaucupé par le nombre de variable attendu. La fonction nécessite dés lors un effort supplémentaire dans son nom.
 
+Mauvais
 ```js
 function addToDate(date, month) { }
 const date = new Date();
 addToDate(date, 1); // ça ajoute quoi ?
 ```
-
+Bon
 ```js
 function addMonthToDate(month, date) { }
 const date = new Date();
