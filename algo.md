@@ -73,15 +73,9 @@ import { get } from 'request';
 import { writeFile } from 'fs';
 
 get('https://goo.gl/FxyZ7i')
-  .then((response) => {
-    return writeFile('article.html', response);
-  })
-  .then(() => {
-    console.log('File written');
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+  .then(response => writeFile('article.html', response)))
+  .then(() => console.log('File written'))
+  .catch(err => console.error(err));
 ```
 
 ### Et même les Async/Await
