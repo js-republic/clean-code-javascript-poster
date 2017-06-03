@@ -37,6 +37,36 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 }
 ```
 
+## Préférez le polymorphisme à trop de condition
+
+Mauvais
+```js
+class TrainCustomer {
+  getDiscount (){
+    if (this.age < 25)                      return this.age * 0.9;
+    else if (this.type === 'trainEmployee') return 30;
+    else if (this.hasCard)                  return 10;
+    /* ... lot of conditions */
+  }
+}
+```
+
+Good
+```js
+class TrainCustomer { /*...*/ }
+
+class YoungCustomer extends TrainCustomer {
+  getDiscount () { return this.age * 0.9; }
+}
+class TrainEmployeeCustomer extends TrainCustomer {
+  getDiscount () { return 30; }
+}
+class CardHolderCustomer extends TrainCustomer {
+  getDiscount () { return 10; }
+}
+```
+
+
 ## Pour bien gérer l'asynchronisme, on peut 
 
 ### Utiliser les callback
